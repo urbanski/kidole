@@ -3,15 +3,33 @@ import json
 import pprint
 import sys
 import re
+import argparse
+
+SIG_DIR = "fingerprints/"
+SIG_FILE = ""
 
 def load_fingerprints():
-    json_data = open("webapps.ky").read()
+    json_data = open("fingerprints/webapps.ky").read()
     
     for line in json_data:
         if line[0:1] == "#":
             json_data.replace(line,"")
     data = json.loads(json_data)
     return data
+
+def handle_cmd_line():
+    desc = """Kidole is a passive URL fingerprinting tool. It is designed to attempt to passively identify web applications, web services, and systems that may be running on a web server by observing the HTTP requests that are made to the device. Kidole supports python regular expressions."""
+    
+    parser = argparse.ArgumentParser(description=desc)
+    
+    signature_group = parser.add_argument_group('fingerprints','')
+    signature_group.add_argument('-sD','--sig-dir',required=False,dest="sig_dir",help="Directory containing signatures", metavar="DIRECTORY")
+    signature_group.add_argument('-sF', '--sig-file', required=False, dest="sig_file", help="File containing signatures", metavar="FILE")
+        
+    parser.add_argument('-f, --file', required=False, dest="input_file", help="url file to read", metavar="FILE")
+
+    
+    (args) = parser.parse_args()
 
 def main():
     url_list = sys.stdin.readlines()
@@ -26,4 +44,5 @@ def main():
                             print "%s|%s|%s|%s" % (signature_group, app_name, sig, url)
                             
 #application entrypoint
+handle_cmd_line()
 main()
