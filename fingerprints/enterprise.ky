@@ -1,0 +1,33 @@
+#MS Project Server
+{"Microsoft Project Server":["/projectserver/images/branding.gif","/projectserver/images/pgHome.gif","/projectserver/images/pgTask.gif"]}
+
+#Citrix WebTop
+{"Citrix WebTop":["/sw/auth/login.aspx","/images/ctxHeader01.jpg","/images/Safeword_Token.jpg"]}
+
+#Outlook Web Access
+{"Outlook Web Access":["/images/outlook.jpg","/exchweb/bin/auth/owalogon.asp","/owa/","/owa/[0-9.]*/themes/base/lgntopl.gif"]}
+
+#MS Sharepoint
+{"Microsoft Sharepoint":["/_layouts/imags/helpicon.gif","/PublishingImages/NewsArticleImage.jpg"]}
+
+#HP Insight Manager
+{"HP Insight Manager":["/mxhtml/images/signin_logo.gif","/mxportal/home/MxPortalFrames.jsp","/mxhtml/images/status_critical_15.gif","/mxportal/home/en_US/servicetools.gif"]}
+
+#Vmware Virtual Center
+# should this be ESX ?
+{"VMWare Virtual Center":["/ui/"]}
+
+#TopAccess Toshiba e-Studio520
+{"TopAccess Toshiba e-Studio520":["/Default?MAIN=DEVICE"]}
+
+#HP blade enclosure
+{"HP Blade Enclosure":["/images/icon_server_connected.gif"]}
+
+#HP System Management Homepage
+{"HP System Management Homepage v2.0.2.106":["/cpqlogin.htm?RedirectUrl=/&RedirectQueryString="]}
+
+#Cisco SDM
+{"Cisco SDM":["/archive/flash:home/html/images/Cisco_logo.gif"]}
+
+#netForensics
+{"netForensics":["/nfdesktop.jnlp","/nfservlets/servlet/SPSRouterServlet/","/jwsappmngr.jnlp"]}
