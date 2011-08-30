@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+import json
+import pprint
+import sys
+import re
+
+
+def main():
+    url_list = sys.stdin.readlines()
+    json_data = open("webapps.ky").read()
+    data = json.loads(json_data)
+    pp = pprint.PrettyPrinter(indent=4)
+    #pp.pprint(data)
+    
+    for url in url_list:
+        for signature_group in data:
+            for signature in data[signature_group]:
+                if (re.search(signature, url)):
+                    print "%s|%s|%s" % (signature_group, signature, url)
+    
+#application entrypoint
+main()
