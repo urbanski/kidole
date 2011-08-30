@@ -4,19 +4,26 @@ import pprint
 import sys
 import re
 
+def load_fingerprints():
+    json_data = open("webapps.ky").read()
+    
+    for line in json_data:
+        if line[0:1] == "#":
+            json_data.replace(line,"")
+    data = json.loads(json_data)
+    return data
 
 def main():
     url_list = sys.stdin.readlines()
-    json_data = open("webapps.ky").read()
-    data = json.loads(json_data)
-    pp = pprint.PrettyPrinter(indent=4)
-    #pp.pprint(data)
+    fpdata = load_fingerprints()
     
     for url in url_list:
-        for signature_group in data:
-            for signature in data[signature_group]:
-                if (re.search(signature, url)):
-                    print "%s|%s|%s" % (signature_group, signature, url)
-    
+        for signature_group in fpdata:
+            for app_group in fpdata[signature_group]:
+                for app_name in app_group:
+                    for sig in app_group[app_name]:
+                        if (re.search(sig, url)):
+                            print "%s|%s|%s|%s" % (signature_group, app_name, sig, url)
+                            
 #application entrypoint
 main()
