@@ -5,19 +5,31 @@ import sys
 import re
 import argparse
 
+#overrdiable constants
 SIG_DIR = "fingerprints/"
 SIG_FILE = ""
 
+#global variables
+url_list = ""       #list of urls to match against
+fpdata = ""         #fingerprint data structure
+
+#load fingerprints from file
 def load_fingerprints():
     json_data = open("fingerprints/webapps.ky").read()
     
+    #comments are not JSON-compatible. is support necessary?
     for line in json_data:
         if line[0:1] == "#":
             json_data.replace(line,"")
+            
+            
     data = json.loads(json_data)
     return data
 
+#process all command line arguments
 def handle_cmd_line():
+    global url_list
+    
     desc = """Kidole is a passive URL fingerprinting tool. It is designed to attempt to passively identify web applications, web services, and systems that may be running on a web server by observing the HTTP requests that are made to the device. Kidole supports python regular expressions."""
     
     parser = argparse.ArgumentParser(description=desc)
@@ -26,13 +38,26 @@ def handle_cmd_line():
     signature_group.add_argument('-sD','--sig-dir',required=False,dest="sig_dir",help="Directory containing signatures", metavar="DIRECTORY")
     signature_group.add_argument('-sF', '--sig-file', required=False, dest="sig_file", help="File containing signatures", metavar="FILE")
         
-    parser.add_argument('-f, --file', required=False, dest="input_file", help="url file to read", metavar="FILE")
+    parser.add_argument('-f, --file', required=False, default=None, dest="input_file", help="url input file to read", metavar="FILE")
 
     
     (args) = parser.parse_args()
 
+    #handle input file
+    if (args.input_file == None):
+        #read from stdin
+        url_list = sys.stdin.readlines()
+    else:
+        #read from file
+        fptr = open(args.input_file,'r')
+        url_list = fptr.readlines()
+        
+    
+
+#this is the main part of the application
 def main():
-    url_list = sys.stdin.readlines()
+    global url_list
+    global fpdata
     fpdata = load_fingerprints()
     
     for url in url_list:
