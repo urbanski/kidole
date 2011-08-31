@@ -21,9 +21,12 @@ def load_fingerprints():
     for line in json_data:
         if line[0:1] == "#":
             json_data.replace(line,"")
-            
-            
-    data = json.loads(json_data)
+        
+    #json.loads throws a ValueError if it cannot parse the JSON structure    
+    try:
+        data = json.loads(json_data)
+    except ValueError:
+        print "An error occured while loading fingerprints"
     return data
 
 #process all command line arguments
