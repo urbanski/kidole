@@ -1,0 +1,14 @@
+Kidole - a url fingerprinting tool
+=========
+Kidole is a passive URL fingerprinting tool. It is designed to attempt to passively identify web applications, web services, and systems that may be running on a web server by observing the HTTP requests that are made to the device. Kidole supports python regular expressions.
+
+usage:
+
+
+
+authors:
+will urbanski <urbanski@vt.edu>
+
+Some fingerprints taken graciously from:
+Yokoso <yokoso.inguardians.com>
+FuzzDB <code.google.com/p/fuzzdb>
