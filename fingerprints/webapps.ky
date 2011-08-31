@@ -1,5 +1,6 @@
 {"webapps":[
 {"Wordpress":["/wp-admin/","/wp-content/"]},
+{"phpMyAdmin":["/php[mM]{1}y[aA]{1}dmin/","/server_sql.php","/themes/pmahomme/img/logo_left.png"]},
 {"Drupal":["modules/.gitdrush/",
 "modules/.settings/",
 "modules/AudioRecordingField/",
