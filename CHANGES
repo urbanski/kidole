@@ -1,0 +1,14 @@
+CHANGES
+===========
+
+2011-08-31:
+Application:
+
+
+Signatures:
+* VTCalendar
+* Adobe XML
+* phpBB
+
+Outstanding todo:
+* Snort signature support (?)

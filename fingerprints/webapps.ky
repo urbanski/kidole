@@ -6320,5 +6320,8 @@
 "modules/zipsads/",
 "modules/zombiekiller/",
 "modules/zoomify/",
-"modules/zws/"]}
+"modules/zws/"]},
+{"VTCalender":["/calendar/main.php?calendarid=default","main.php?view=event&eventid="]},
+{"Adobe XML":["/flex2gateway/","/cfamfpoolling","/amfpolling","/blazeds/messagebroker/http","/blazeds/messagebroker/httpsecure","/samples/messagebroker/http","/samples/messagebroker/httpsecure","/lcds/messagebroker/http","/lcds/messagebroker/httpsecure","/lcds-samples/messagebroker/http","/lcds-samples/messagebroker/httpsecure"]}
+{"phpBB":["viewforum.php?f=[0-9]*&sid=[abcdef0-9]*"]}
 ]}

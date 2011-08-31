@@ -1,33 +1,15 @@
-#MS Project Server
-{"Microsoft Project Server":["/projectserver/images/branding.gif","/projectserver/images/pgHome.gif","/projectserver/images/pgTask.gif"]}
-
-#Citrix WebTop
-{"Citrix WebTop":["/sw/auth/login.aspx","/images/ctxHeader01.jpg","/images/Safeword_Token.jpg"]}
-
-#Outlook Web Access
-{"Outlook Web Access":["/images/outlook.jpg","/exchweb/bin/auth/owalogon.asp","/owa/","/owa/[0-9.]*/themes/base/lgntopl.gif"]}
-
-#MS Sharepoint
-{"Microsoft Sharepoint":["/_layouts/imags/helpicon.gif","/PublishingImages/NewsArticleImage.jpg"]}
-
-#HP Insight Manager
-{"HP Insight Manager":["/mxhtml/images/signin_logo.gif","/mxportal/home/MxPortalFrames.jsp","/mxhtml/images/status_critical_15.gif","/mxportal/home/en_US/servicetools.gif"]}
-
-#Vmware Virtual Center
-# should this be ESX ?
-{"VMWare Virtual Center":["/ui/"]}
-
-#TopAccess Toshiba e-Studio520
-{"TopAccess Toshiba e-Studio520":["/Default?MAIN=DEVICE"]}
-
-#HP blade enclosure
-{"HP Blade Enclosure":["/images/icon_server_connected.gif"]}
-
-#HP System Management Homepage
-{"HP System Management Homepage v2.0.2.106":["/cpqlogin.htm?RedirectUrl=/&RedirectQueryString="]}
-
-#Cisco SDM
-{"Cisco SDM":["/archive/flash:home/html/images/Cisco_logo.gif"]}
-
-#netForensics
-{"netForensics":["/nfdesktop.jnlp","/nfservlets/servlet/SPSRouterServlet/","/jwsappmngr.jnlp"]}
+{"Enterprise Applications:[
+{"Microsoft Project Server":["/projectserver/images/branding.gif","/projectserver/images/pgHome.gif","/projectserver/images/pgTask.gif"]},
+{"Citrix WebTop":["/sw/auth/login.aspx","/images/ctxHeader01.jpg","/images/Safeword_Token.jpg"]},
+{"Outlook Web Access":["/images/outlook.jpg","/exchweb/bin/auth/owalogon.asp","/owa/","/owa/[0-9.]*/themes/base/lgntopl.gif"]},
+{"Microsoft Sharepoint":["/_layouts/imags/helpicon.gif","/PublishingImages/NewsArticleImage.jpg"]},
+{"HP Insight Manager":["/mxhtml/images/signin_logo.gif","/mxportal/home/MxPortalFrames.jsp","/mxhtml/images/status_critical_15.gif","/mxportal/home/en_US/servicetools.gif"]},
+{"VMWare Virtual Center":["/ui/"]},
+{"TopAccess Toshiba e-Studio520":["/Default?MAIN=DEVICE"]},
+{"HP Blade Enclosure":["/images/icon_server_connected.gif"]},
+{"HP System Management Homepage v2.0.2.106":["/cpqlogin.htm?RedirectUrl=/&RedirectQueryString="]},
+{"Cisco SDM":["/archive/flash:home/html/images/Cisco_logo.gif"]},
+{"netForensics":["/nfdesktop.jnlp","/nfservlets/servlet/SPSRouterServlet/","/jwsappmngr.jnlp"]},
+{"Apache Webserver":["/apache/logs/access.log","/apache/logs/access_log","/apache/logs/error.log","/apache/logs/error_log","/httpd/logs/access.log","/httpd/logs/access_log","/httpd/logs/error.log","/httpd/logs/error_log","/icons"]}
+{"Apache Tomcat":["/examples/jsp/index.html","/examples/jsp/snp/snoop.jsp","/examples/jsp/source.jsp","/examples/servlet/HelloWorldExample","/examples/servlet/SnoopServlet","/examples/servlet/TroubleShooter","/examples/servlet/default/jsp/snp/snoop.jsp","/examples/servlet/default/jsp/source.jsp","/examples/servlet/org.apache.catalina.INVOKER.HelloWorldExample","/examples/servlet/org.apache.catalina.INVOKER.SnoopServlet","/examples/servlet/org.apache.catalina.INVOKER.TroubleShooter","/examples/servlet/org.apache.catalina.servlets.DefaultServlet/jsp/snp/snoop.jsp","/examples/servlet/org.apache.catalina.servlets.DefaultServlet/jsp/source.jsp","/examples/servlet/org.apache.catalina.servlets.WebdavServlet/jsp/snp/snoop.jsp","/examples/servlet/org.apache.catalina.servlets.WebdavServlet/jsp/source.jsp","/examples/servlet/snoop","/examples/servlets/index.html","/jsp-examples","/manager","/manager/deploy?path=foo","/manager/html/","/servlet/default/","/servlet/org.apache.catalina.INVOKER.org.apache.catalina.servlets.DefaultServlet/tomcat.gif","/servlet/org.apache.catalina.INVOKER.org.apache.catalina.servlets.SnoopAllServlet","/servlet/org.apache.catalina.INVOKER.org.apache.catalina.servlets.WebdavServlet/","/servlet/org.apache.catalina.servlets.DefaultServlet/","/servlet/org.apache.catalina.servlets.DefaultServlet/tomcat.gif","/servlet/org.apache.catalina.servlets.HTMLManagerServlet","/servlet/org.apache.catalina.servlets.InvokerServlet/org.apache.catalina.servlets.DefaultServlet/tomcat.gif","/servlet/org.apache.catalina.servlets.InvokerServlet/org.apache.catalina.servlets.SnoopAllServlet","/servlet/org.apache.catalina.servlets.ManagerServlet","/servlet/org.apache.catalina.servlets.SnoopAllServlet","/servlet/org.apache.catalina.servlets.WebdavServlet/","/tomcat-docs","/webdav","/webdav/index.html","/webdav/servlet/org.apache.catalina.servlets.WebdavServlet/","/webdav/servlet/webdav/","/conf/","/conf/server.xml/","/WEB-INF/","/WEB-INF/web.xml","/WEB-INF/classes/","/shared/lib/"]}
+]}

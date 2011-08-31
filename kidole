@@ -51,7 +51,6 @@ def handle_cmd_line():
         #read from file
         fptr = open(args.input_file,'r')
         url_list = fptr.readlines()
-        
     
 
 #this is the main part of the application
