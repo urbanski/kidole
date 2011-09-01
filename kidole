@@ -4,10 +4,10 @@ import pprint
 import sys
 import re
 import argparse
+import os
 
 #overrdiable constants
-SIG_DIR = "fingerprints/"
-SIG_FILE = ""
+sig_path = "./fingerprints/"
 
 #global variables
 url_list = ""       #list of urls to match against
@@ -15,35 +15,89 @@ fpdata = ""         #fingerprint data structure
 
 #load fingerprints from file
 def load_fingerprints():
-    json_data = open("fingerprints/webapps.ky").read()
+    global sig_path
+    fp_data = []
     
-    #comments are not JSON-compatible. is support necessary?
-    for line in json_data:
-        if line[0:1] == "#":
-            json_data.replace(line,"")
-        
+    if (os.path.isdir(sig_path)):
+        #load all files in
+        for (dirpath, dirnames, filenames) in os.walk(sig_path):
+            for file in filenames:
+                fp_data.append(load_fp_file("%s/%s" % (dirpath, file)))
+        return fp_data
+    else:
+        return load_fp_file(sig_path)
+
+def load_fp_file(path):
+    
+    #detect filetype
+    file_data = open(path).read()
+    
     #json.loads throws a ValueError if it cannot parse the JSON structure    
     try:
-        data = json.loads(json_data)
+        data = json.loads(file_data)
     except ValueError:
-        print "An error occured while loading fingerprints"
+        #print path
+        sig_group = path
+        data = {sig_group:[]}
+        #attempt to process as a snort signature
+        file_data = file_data.split("\n")
+        for line in file_data:
+            line = line.lstrip()
+            if (re.match("alert tcp *\(*\)*",line)):
+                iStart = line.find("(")
+                sRuleLine = line[iStart+1:len(line)-1]
+                aRuleParts = sRuleLine.split("; ")
+                
+                aToMatch = []
+                
+                results = re.findall("content:\".*\"; nocase; http_uri;",sRuleLine)
+                if len(results) == 1:
+                    results = results[0].split(" nocase; http_uri;")
+                    for content_tomatch in results:
+                        content_tomatch = content_tomatch.lstrip()
+                        if len(content_tomatch) > 0:
+                            # drop " and "; from start/end
+                            regexp = content_tomatch.split("content:")[1][1:len(content_tomatch.split("content:")[1])-2]
+                            aToMatch.append(regexp)
+                
+                #need to try and split each line.
+                sMsgPart = ""
+                for i in range(0,len(aRuleParts)):
+                    if aRuleParts[i].split(":")[0] == "msg":
+                        sMsgPart = aRuleParts[i].split(":")[1]
+                        #print "Alert: %s" % sMsgPart
+                
+                sPyRegex = "*"
+                for predicate in aToMatch:
+                    predicate = re.escape(predicate)
+                    sPyRegex = "%s%s*" % (sPyRegex,predicate)
+                
+                #print sPyRegex
+                
+                new_signature = {}
+                new_signature[sMsgPart] = [sPyRegex]
+                
+                data[sig_group].append(new_signature)
+                
+        #print "An error occured while loading fingerprints"
     return data
 
 #process all command line arguments
 def handle_cmd_line():
     global url_list
+    global sig_path
+    global args
     
     desc = """Kidole is a passive URL fingerprinting tool. It is designed to attempt to passively identify web applications, web services, and systems that may be running on a web server by observing the HTTP requests that are made to the device. Kidole supports python regular expressions."""
     
     parser = argparse.ArgumentParser(description=desc)
     
     signature_group = parser.add_argument_group('fingerprints','')
-    signature_group.add_argument('-sD','--sig-dir',required=False,dest="sig_dir",help="Directory containing signatures", metavar="DIRECTORY")
-    signature_group.add_argument('-sF', '--sig-file', required=False, dest="sig_file", help="File containing signatures", metavar="FILE")
+    signature_group.add_argument('-s','--sig',required=False,dest="sig_path",help="Path to signature(s)", metavar="DIRECTORY")
+    signature_group.add_argument('-sL','--sig-list', dest="sig_list", required=False, action="store_true", default=False, help="List signatures")
         
     parser.add_argument('-f, --file', required=False, default=None, dest="input_file", help="url input file to read", metavar="FILE")
 
-    
     (args) = parser.parse_args()
 
     #handle input file
@@ -55,20 +109,40 @@ def handle_cmd_line():
         fptr = open(args.input_file,'r')
         url_list = fptr.readlines()
     
+    #set the sig path
+    if (args.sig_path != None):
+        sig_path = args.sig_path
+    
 
 #this is the main part of the application
 def main():
     global url_list
     global fpdata
+    global args
+    
+    #load fingerprints
     fpdata = load_fingerprints()
     
-    for url in url_list:
+    if (args.sig_list == True):
+        #list all installed (wrong word) signatures
+        print "Kidole signature list: "
         for signature_group in fpdata:
-            for app_group in fpdata[signature_group]:
-                for app_name in app_group:
-                    for sig in app_group[app_name]:
-                        if (re.search(sig, url)):
-                            print "%s|%s|%s|%s" % (signature_group, app_name, sig, url)
+            for app_group in signature_group:
+                print "%s" % app_group
+                print "======================"
+                for signature in signature_group[app_group]:
+                    for app_name in signature:
+                        print "     %s" % app_name    
+        
+    else:    
+        #process fingerprints
+        for url in url_list:
+            for signature_group in fpdata:
+                for app_group in fpdata[signature_group]:
+                    for app_name in app_group:
+                        for sig in app_group[app_name]:
+                            if (re.search(sig, url)):
+                                print "%s|%s|%s|%s" % (signature_group, app_name, sig, url)
                             
 #application entrypoint
 handle_cmd_line()

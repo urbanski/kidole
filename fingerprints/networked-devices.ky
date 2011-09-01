@@ -1,12 +1,5 @@
-#HP iLo
-{"HP iLo":["/ilo.gif"]}
-
-
-
-###PRINTERS########3
-
-#Lexmark T632
-{"Lexmark T632":["/printer/image","/images/lexbold.gif"]}
-
-#Lexmark C772
+{"Networked Devices":[
+{"HP iLo":["/ilo.gif"]},
+{"Lexmark T632":["/printer/image","/images/lexbold.gif"]},
 {"Lexmark C772":["/images/lexlogo.gif","/images/printer.gif"]}
+]}
