@@ -64,7 +64,7 @@ def load_fp_file(path):
                 sMsgPart = ""
                 for i in range(0,len(aRuleParts)):
                     if aRuleParts[i].split(":")[0] == "msg":
-                        sMsgPart = aRuleParts[i].split(":")[1]
+                        sMsgPart = aRuleParts[i].split(":")[1][1:len(aRuleParts[i].split(":")[1])-1]
                         #print "Alert: %s" % sMsgPart
                 
                 sPyRegex = "*"
