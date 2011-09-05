@@ -1,6 +1,6 @@
 Kidole - a url fingerprinting tool
 =========
-Kidole is a passive URL fingerprinting tool. It attempts to passively identify web applications, web services, and systems that may be running on a web server by observing the HTTP requests that are made to the device. Kidole is passive and will not query or make requests from a web service. Kidole may be helpful depending on how it is used. For example, using Bro IDS you can record all inbound HTTP requests that result in HTTP 200 OK. These could then be analyzed with Kidole to determine if any well known web applications are being used as services.
+Kidole is a passive URL fingerprinting tool. It attempts to passively identify web applications, web services, and systems that may be running on a web server by fingerprinting URLs that have been recorded. Kidole is passive and will not query or make requests from a web service. Kidole is helpful for identifying the types of services that are being requested, or are being probed for. For example, using a network monitoring platform you can record all inbound HTTP requests that result in HTTP 200 OK. These could then be analyzed with Kidole to determine if any well known web applications are being accessed.
 
 Kidole supports python regular expressions.
 
@@ -10,6 +10,8 @@ usage
 cat urls.lst | kidole
 
 kidole -f urls.lst
+
+kidole --sig-list
 
 
 authors
