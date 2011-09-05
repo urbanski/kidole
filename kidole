@@ -103,7 +103,11 @@ def handle_cmd_line():
     #handle input file
     if (args.input_file == None):
         #read from stdin
-        url_list = sys.stdin.readlines()
+		if (sys.stdin.isatty() == False):
+			url_list = sys.stdin.readlines()
+		else:
+			#throw an error. No stdin or file input
+			print "Error: You must specify an input file or pass input via STDIN."
     else:
         #read from file
         fptr = open(args.input_file,'r')
