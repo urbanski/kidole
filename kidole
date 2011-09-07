@@ -67,7 +67,7 @@ def load_fp_file(path):
                         sMsgPart = aRuleParts[i].split(":")[1][1:len(aRuleParts[i].split(":")[1])-1]
                         #print "Alert: %s" % sMsgPart
                 
-                sPyRegex = "*"
+                sPyRegex = ".*"
                 for predicate in aToMatch:
                     predicate = re.escape(predicate)
                     sPyRegex = "%s%s*" % (sPyRegex,predicate)
@@ -142,11 +142,13 @@ def main():
         #process fingerprints
         for url in url_list:
             for signature_group in fpdata:
-                for app_group in fpdata[signature_group]:
-                    for app_name in app_group:
-                        for sig in app_group[app_name]:
-                            if (re.search(sig, url)):
-                                print "%s|%s|%s|%s" % (signature_group, app_name, sig, url)
+                for app_group in signature_group:
+                    for app_name in signature_group[app_group]:
+                        for sigs in app_name:
+                            for sig in app_name[sigs]:
+                                #print sig
+                                if (re.search(sig, url)):
+                                    print "%s|%s|%s|%s" % (app_group, sigs, sig, url)
                             
 #application entrypoint
 handle_cmd_line()
